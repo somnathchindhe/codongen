@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DNA Sequence Result</title>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap" rel="stylesheet">
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+<style>
+.footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: lightgray;
+   color: black;
+   text-align: center;
+}
+/* Header */
+.header {
+   /* background-color: #007bff;*/
+    color: #fff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    background: #83A2FF url(images/overlay.png) repeat;
+    align-items: center;
+}
+
+/* Logo */
+.left-logo,
+.right-logo {
+    flex: 1; /* Equal width for logos */
+}
+
+.center-title {
+    flex: 2; /* Twice the width of logos */
+}
+
+.header img {
+    height: 150px;
+}
+
+/* Menu or Navigation Bar */
+#menu {
+/*    transition: 0.3s;  */
+ /*   padding: 0em 1.5em; */
+ /*   text-decoration: none; */
+  /*  font-size: 0.90em;  */
+ /*   font-weight: 300;   */
+  /*  text-transform: uppercase;  */
+  /*  line-height: 5px; */   
+  background-color: #333; /* Example background color */
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+}
+
+/* Style for Footer */
+.footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #f8f9fa; /* Light gray background */
+   color: #212529; /* Dark text color */
+   text-align: center;
+   padding: 10px 0; /* Padding around the text */
+   font-size: 14px; /* Font size */
+}
+
+/* Menu or Navigation Bar */
+#menu {
+    background-color: #333; /* Dark gray background */
+    color: #fff; /* White text color */
+    padding: 10px 0; /* Padding around the text */
+    text-align: center; /* Center the text */
+}
+
+
+#menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#menu ul li:last-child {
+    margin-right: 0;
+}
+
+#menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.text-content {
+    flex: 1;
+/*    margin-right: 20px;*/
+}
+
+.text-content_head {
+    flex: 1;
+   /* margin-right: 20px;*/
+    text-align: center;
+}
+
+.image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img {
+    width: 100%; 
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: lightgray;
+   color: black;
+   text-align: center;
+   margin: 0;
+}
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <img src="images/crab_logo.png" class="rounded float-left" alt="LOGO">
+        </div>
+        <div class="text-center">
+            <h1 style="font-size: 2.5rem; color: white;">ORMT: OPT mRNA Prediction Tool</h1>
+        </div>
+        <div>
+            <img src="images/imtech_logo.png" class="rounded float-right" alt="IMTECH_LOGO">
+        </div>
+    </div>
+
+    <!-- Menu or Navigation Bar -->
+    <div id="menu">
+        <ul>
+            <li><a href="index.html" accesskey="1" title="">Home</a></li>
+            <li><a href="test.php" accesskey="2" title="">Test Your Sequence</a></li>
+            <li><a href="search.php" accesskey="3" title="">Previous Job Results</a></li>
+            <li><a href="#" accesskey="4" title="">Reference</a></li>
+            <li><a href="#" accesskey="5" title="">Help</a></li>
+        </ul>
+    </div>
+</div>
+   <div class="container">
+        <div class="text-content_head">
+            <h2>Welcome to optmRNA</h2> 
+        </div>
+   </div>
+
+    <div class="container">
+        <div class="text-content">
+           <!-- <h2>Welcome to optmRNA</h2> --> <!-- Added Heading -->
+            <p>This tool is designed to help you to find optimal synonymous DNA sequences to express in E.coli, based on codon usage, GC content, and mRNA fold energy values.</p> <!-- Added Description -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="mrna_express_2.png" alt="Tool Illustration"> 
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-content">
+            <h3>Codon usage score:</h3> <!-- Section 1 -->
+            <p>This score is a measure of how frequently a particular codon is used in E.coli. This score calculated using codon usage frequency of each codon per thousand Nucleotides in <i>Escherichia coli</i>.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-content">
+            <h3>GC Content Score:</h3> <!-- Section 2 -->
+            <p>This score is a measure of the percentage of guanine (G) and cytosine (C) nucleotides in a DNA sequence. G and C nucleotides form three hydrogen bonds, while adenine (A) and thymine (T) nucleotides form two hydrogen bonds. As a result, DNA sequences with higher GC content are typically more stable.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-content">
+            <h3>RNA structure:</h3> <!-- Section 3 -->
+            <p>The structure of an RNA molecule is important for its function. RNA molecules that fold into stable structures are less likely to function properly. It uses Vienna RNAfold package to calculate free energy (kcal/mol-1) of RNA ensemble. If mRNA structure is more unstable, it is likely to translate fast.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-content">
+            <h3>The tool works by taking a DNA sequence as input and then estimating the values of these three parameters for the sequence and gives table output.</h3> <!-- Added Description -->
+            <p>You can then use this information to select sequences that are likely to be optimally translated in <i>Escherichia coli</i></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>All rights reserved. being modified by somnath, BIC, CSIR-IMTECH</p>
+    </div>
+</body>
+</html>
